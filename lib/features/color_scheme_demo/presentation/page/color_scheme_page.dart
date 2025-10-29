@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-// Importamos las rutas
-import 'package:practica_colores/core/router/app_routes.dart';
-import '../widgets/color_tile.dart';
-import '../widgets/section_title.dart';
-import '../widgets/typography_section.dart';
+import 'package:go_router/go_router.dart'; // 1. Importar go_router
+// 2. Corregir import del proyecto
+import 'package:navegacion2/core/router/app_routes.dart';
+import 'package:navegacion2/features/color_scheme_demo/presentation/widgets/color_tile.dart';
+import 'package:navegacion2/features/color_scheme_demo/presentation/widgets/section_title.dart';
+import 'package:navegacion2/features/color_scheme_demo/presentation/widgets/typography_section.dart';
+
 
 class ColorSchemePage extends StatelessWidget {
   const ColorSchemePage({super.key});
@@ -23,6 +25,7 @@ class ColorSchemePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // ... (Todo tu código de Widgets de colores y tipografía va aquí) ...
               const SectionTitle(text: "Colores Primarios"),
               Wrap(
                 spacing: 8,
@@ -34,7 +37,6 @@ class ColorSchemePage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 24),
-
               const SectionTitle(text: "Colores Secundarios"),
               Wrap(
                 spacing: 8,
@@ -45,7 +47,6 @@ class ColorSchemePage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 24),
-
               const SectionTitle(text: "Superficie y Fondo"),
               Wrap(
                 spacing: 8,
@@ -56,7 +57,6 @@ class ColorSchemePage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 24),
-
               const SectionTitle(text: "Errores"),
               Wrap(
                 spacing: 8,
@@ -67,10 +67,8 @@ class ColorSchemePage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 24),
-
               const TypographySection(),
-
-              // --- BOTONES DE NAVEGACIÓN AÑADIDOS ---
+              // --- BOTONES DE NAVEGACIÓN CORREGIDOS ---
               const SizedBox(height: 24),
               const SectionTitle(text: "Navegación"),
               Wrap(
@@ -79,19 +77,20 @@ class ColorSchemePage extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.responsive);
+                      // 3. Usar context.go() con el PATH
+                      context.go(AppRoutes.responsivaPath);
                     },
                     child: const Text('Ir a Card Responsiva'),
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.estadisticas);
+                      // 3. Usar context.go() con el PATH
+                      context.go(AppRoutes.estadisticaPath);
                     },
                     child: const Text('Ir a Dashboard'),
                   ),
                 ],
               ),
-              // --- FIN DE BOTONES AÑADIDOS ---
             ],
           ),
         ),

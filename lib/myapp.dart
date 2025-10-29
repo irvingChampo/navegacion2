@@ -1,15 +1,15 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:navegacion2/core/router/app_router.dart';
-import 'package:navegacion2/core/router/app_routes.dart';
-import 'package:navegacion2/features/color_scheme_demo/presentation/page/color_scheme_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: appRouter,
+
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
@@ -28,8 +28,6 @@ class MyApp extends StatelessWidget {
         ),
       ),
       themeMode: ThemeMode.system,
-      initialRoute: AppRoutes.home,
-      onGenerateRoute: AppRouter.onGenerateRoute,
     );
   }
 }

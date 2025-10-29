@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practica_colores/features/color_scheme_demo/presentation/widgets/section_title.dart';
+import 'package:navegacion2/features/color_scheme_demo/presentation/widgets/section_title.dart';
 
 class TypographySection extends StatelessWidget {
   const TypographySection({super.key});

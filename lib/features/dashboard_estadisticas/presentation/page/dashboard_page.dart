@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-// Importamos las rutas
-import 'package:practica_colores/core/router/app_routes.dart';
-import 'package:practica_colores/features/dashboard_estadisticas/presentation/widgets/custom_card.dart';
+import 'package:go_router/go_router.dart'; // 1. Importar go_router
+// 2. Corregir import del proyecto
+import 'package:navegacion2/core/router/app_routes.dart';
+import 'package:navegacion2/features/dashboard_estadisticas/presentation/widgets/custom_card.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -19,19 +20,21 @@ class DashboardPage extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              // --- BOTONES DE NAVEGACIÓN AÑADIDOS ---
+              // --- BOTONES DE NAVEGACIÓN CORREGIDOS ---
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.home);
+                      // 3. Usar context.go() con el PATH
+                      context.go(AppRoutes.homePath);
                     },
                     child: const Text('Ir a Home'),
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.responsive);
+                      // 3. Usar context.go() con el PATH
+                      context.go(AppRoutes.responsivaPath);
                     },
                     child: const Text('Ir a Card Responsiva'),
                   ),
@@ -40,7 +43,6 @@ class DashboardPage extends StatelessWidget {
               const SizedBox(height: 16),
               // --- FIN DE BOTONES AÑADIDOS ---
 
-              // Tu layout original
               Expanded(
                 child: LayoutBuilder(
                   builder: (context, constraints) {
@@ -67,7 +69,6 @@ class DashboardPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              // Tus botones originales
               Row(
                 children: [
                   ElevatedButton(onPressed: () {}, child: const Text('Reporte')),

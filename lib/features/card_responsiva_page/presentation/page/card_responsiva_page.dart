@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-// Importamos las rutas
-import 'package:practica_colores/core/router/app_routes.dart';
-import 'package:practica_colores/features/card_responsiva_page/presentation/widgets/custom_card_con_imagen.dart';
+import 'package:go_router/go_router.dart'; // 1. Importar go_router
+// 2. Corregir import del proyecto
+import 'package:navegacion2/core/router/app_routes.dart';
+import 'package:navegacion2/features/card_responsiva_page/presentation/widgets/custom_card_con_imagen.dart';
 
 class CardResponsivaPage extends StatelessWidget {
   const CardResponsivaPage({super.key});
@@ -13,47 +14,43 @@ class CardResponsivaPage extends StatelessWidget {
           child: Text('Tarjeta'),
         ),
       ),
-      // --- BODY MODIFICADO PARA AÑADIR BOTONES ---
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // Tu tarjeta original
             Center(
               child: FractionallySizedBox(
                 widthFactor: 0.8,
                 child: const CustomCardConImagen(
-                  imagePath: 'assets/img/horario.png',
+                  imagePath: 'assets/img/horario.png', // Esto usará el pubspec.yaml
                   text: 'Horario de clases para 9o cuatrimestre.',
                 ),
               ),
             ),
-            // Un espaciador para empujar los botones al fondo
             const Spacer(),
-
-            // --- BOTONES DE NAVEGACIÓN AÑADIDOS ---
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, AppRoutes.home);
+                    // 3. contexto
+                    context.go(AppRoutes.homePath);
                   },
                   child: const Text('Ir a Home'),
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, AppRoutes.estadisticas);
+                    // 3. contexto
+                    context.go(AppRoutes.estadisticaPath);
                   },
                   child: const Text('Ir a Dashboard'),
                 ),
               ],
             ),
-            const SizedBox(height: 20), // Espacio inferior
+            const SizedBox(height: 20),
           ],
         ),
       ),
-      // --- FIN DE BODY MODIFICADO ---
     );
   }
 }
